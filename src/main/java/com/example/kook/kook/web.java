@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class web {
     @GetMapping(path = "/{name}")
     public String hello(@PathVariable String name){
+        System.out.println("input name :" + name);
         return "hello " + name;
     }
 
