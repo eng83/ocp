@@ -12,7 +12,7 @@ public class web {
     @GetMapping(path = "/{name}")
     public String hello(@PathVariable String name){
         System.out.println("v3 input name :" + name);
-        return "hello WoW" + name;
+        return "hello WoW Good" + name;
     }
 
 }
