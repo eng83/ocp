@@ -12,6 +12,7 @@ public class web {
     @GetMapping(path = "/{name}")
     public String hello(@PathVariable String name){
         System.out.println("v3 input name :" + name);
+        System.out.println("Webhook Test");
         return "hello WoW Good" + name;
     }
 
