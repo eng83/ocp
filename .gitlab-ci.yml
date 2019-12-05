@@ -19,7 +19,8 @@ cache:
 
 maven build:
   tags:
-    - gitlabrunner01.x3i0
+    #- gitlabrunner01.x3i0
+    - gitlabrunner01.hiway4
   stage: build
   only:
     - master
