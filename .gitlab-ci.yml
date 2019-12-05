@@ -53,5 +53,5 @@ jar copy:
     - master
   script :
     - echo "JAR COPY"
-    - sshpass -p $T_PASS scp -o StrictHostKeyChecking=no target/$BUILD_FILE_NAME $T_USER_ID@$T_SERVER_IP:$T_PATH
+    - sshpass -p $T_PASS scp -o StrictHostKeyChecking=no target/$BUILD_FILE_NAME $T_USER_ID@$T_SERVER_IP:$T_PATH/$BUILD_FILE_NAME
     #- sshpass -p hdadmin -t hdadmin@10.92.103.214
