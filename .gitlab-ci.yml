@@ -1,0 +1,52 @@
+before_script:
+  # runner shell 환경 변수 세팅
+  - export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.5.10-0.el7_7.x86_64"
+  - export PATH="$JAVA_HOME/bin:$PATH"
+
+stages:
+  - build
+  - copy
+
+# runner에서 사용될 변수 세팅
+variables:
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  #MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository -Dmaven.test.skip=true"
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
+maven build:
+  tags:
+    - gitlabrunner01.x3i0
+  stage: build
+  only:
+    - master
+  script:
+    - java -version
+    - echo "BUILD"
+    # make package
+    #- mvn $MAVEN_CLI_OPTS package
+
+    # list
+    #- ls -al target
+
+    # war copy
+    ##- sshpass -p $T_PASS scp -o StrictHostKeyChecking=no target/$BUILD_FILE_NAME $T_USER_ID@$T_SERVER_IP:$T_PATH
+    # server down
+    ##- sshpass -p $T_PASS ssh -t $T_USER_ID@$T_SERVER_IP "cd $WAS_BIN; ./$WAS_DOWN"
+    ##- sleep 10
+
+    # server start
+    ##- sshpass -p $T_PASS ssh -t $T_USER_ID@$T_SERVER_IP "cd $WAS_BIN; ./$WAS_START"
+
+jar copy:
+  tags:
+    - gitlabrunner01.x3i0
+  stage: copy
+  only:
+    - master
+  script :
+    - java -version
+    - echo "JAR COPY"
