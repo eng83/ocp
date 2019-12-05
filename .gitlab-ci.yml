@@ -29,7 +29,7 @@ maven build:
     - java -version
     - echo ${CI_PROJECT_DIR}
     - echo $(whoami)
-    - mvn package
+    - mvn -Dmaven.test.skip=true package
 
     # make package
     #- mvn $MAVEN_CLI_OPTS package
