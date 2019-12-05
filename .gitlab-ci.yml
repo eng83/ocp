@@ -25,8 +25,11 @@ maven build:
   only:
     - master
   script:
-    - java -version
     - echo "BUILD"
+    - java -version
+    - echo ${CI_PROJECT_DIR}
+    - mvn package
+
     # make package
     #- mvn $MAVEN_CLI_OPTS package
 
@@ -44,10 +47,11 @@ maven build:
 
 jar copy:
   tags:
-    - gitlabrunner01.x3i0
+    - gitlabrunner01.hiway4
   stage: copy
   only:
     - master
   script :
-    - java -version
     - echo "JAR COPY"
+    - sshpass -p $T_PASS scp -o StrictHostKeyChecking=no target/$BUILD_FILE_NAME $T_USER_ID@$T_SERVER_IP:$T_PATH
+    #- sshpass -p hdadmin -t hdadmin@10.92.103.214
